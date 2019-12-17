@@ -22,5 +22,11 @@ func main() {
 	// response := string(bytes)
 	// fmt.Println("response: ",response)
 
-	io.Copy(os.Stdout, httpResponse.Body)
+	// io.Copy(os.Stdout, httpResponse.Body)
+
+	htmlWriter := NewHTMLWriter("response.html")
+	_, err = io.Copy(htmlWriter, httpResponse.Body)
+	if err != nil {
+		fmt.Println("io.Copy error: ", err)
+	}
 }
