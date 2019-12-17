@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"io"
 )
 
 func main() {
@@ -16,8 +17,10 @@ func main() {
 		os.Exit(1)
 	}
 
-	bytes := make([]byte, 99999)
-	httpResponse.Body.Read(bytes)
-	response := string(bytes)
-	fmt.Println("response: ",response)
+	// bytes := make([]byte, 99999)
+	// httpResponse.Body.Read(bytes)
+	// response := string(bytes)
+	// fmt.Println("response: ",response)
+
+	io.Copy(os.Stdout, httpResponse.Body)
 }
