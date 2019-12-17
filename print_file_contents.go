@@ -8,7 +8,6 @@ import (
 
 // FilePrinter x
 type FilePrinter struct {
-	fileName string
 	file *os.File
 }
 
@@ -23,7 +22,6 @@ func NewFilePrinterFromArgs() FilePrinter {
 	}
 
 	return FilePrinter{
-		fileName: fileName,
 		file: file,
 	}
 }
