@@ -10,11 +10,14 @@ import (
 func main() {
 	url := "http://www.google.com"
 
-	response, err := http.Get(url)
+	httpResponse, err := http.Get(url)
 	if err != nil {
 		fmt.Println("HTTP error:", err)
 		os.Exit(1)
 	}
 
-	fmt.Println(response)
+	bytes := make([]byte, 99999)
+	httpResponse.Body.Read(bytes)
+	response := string(bytes)
+	fmt.Println("response: ",response)
 }
